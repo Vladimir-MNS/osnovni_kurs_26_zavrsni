@@ -1,6 +1,6 @@
 <header>
     <div class="blog-masthead">
-        <div class="container">
+        <div class="container" id="navbar">
             <nav class="nav">
                 <a class="nav-link active" href="#">Home</a>
                 <a class="nav-link" href="#">New features</a>
