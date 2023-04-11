@@ -17,10 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {  
         $sql = "INSERT INTO posts (
             title, author, body, created_at) 
-        VALUES ('$author', '$title', '$body', '$createdAt')";
+        VALUES ('$title', '$author', '$body', '$createdAt')";
         $statement = $connection->prepare($sql);
         $statement->execute();
-        header("Location:createpost.php");
         }
 }
 

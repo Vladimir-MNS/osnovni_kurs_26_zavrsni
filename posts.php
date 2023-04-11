@@ -10,6 +10,30 @@ $allPosts = $statement->fetchAll();
 
 $orderedPosts = array_reverse($allPosts);
 
+$validationError = '';
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $author = $_POST["author"];
+    $comment = $_POST['comment'];
+    $postId = $_POST['postId'];
+
+    if(empty($author)) {
+        $validationError = "Niste uneli ime autora";
+    } else if (empty($comment)){
+        $validationError = "Niste uneli tekst komentara";
+    } else {  
+        $sql = "INSERT INTO comments (
+            author, text, post_id) 
+        VALUES ('$author', '$comment', '$postId')";
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        }
+}
+
+
+
+
+
 ?>
 
 
@@ -46,11 +70,22 @@ $orderedPosts = array_reverse($allPosts);
     <div class="col-sm-8 blog-main">
         <?php foreach ($orderedPosts as $post) { ?>
         <div class="blog-post">
-            <h2 class="blog-post-title"><a href="#"><?php echo $post['author'] ?></a></h2>
-            <p class="blog-post-meta"><?php echo date($post['created_at']); ?> by <a href="#"><?php echo $post['title']; ?></a></p>
+            <h2 class="blog-post-title"><a href="singlepost.php?id=<?php echo $post['id']?>"><?php echo $post['title'] ?></a></h2>
+            <p class="blog-post-meta"><?php echo date($post['created_at']); ?> by <a href="#"><?php echo $post['author']; ?></a></p>
 
             <p><?php echo $post['body']; ?></p>
         </div><!-- /.blog-post -->
+    <div class="comments">
+    <form action="" method="POST">
+            <label for="author">Author name:</label><br>
+            <input type="text" id="author" name="author"><br>
+            <label for="comment">Comment text:</label><br>
+            <input type="text" id="comment" name="comment"><br>
+            <input type="hidden" id="postId" name="postId" value="<?php echo $post['id']?>"><br>
+            <input type="submit" value="Add Comment">
+        </form>
+        <?php echo $validationError; ?>
+    </div>
         <?php } ?>
 
         <nav class="blog-pagination">
