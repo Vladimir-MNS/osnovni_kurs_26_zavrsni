@@ -26,3 +26,9 @@ h6,
 .blog-post-title:hover {
     text-decoration: underline;
 }
+
+.validation {
+    color: red;
+    font-size: 16;
+    padding-top: 10px;
+}

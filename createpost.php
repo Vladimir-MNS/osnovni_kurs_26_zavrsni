@@ -1,3 +1,33 @@
+<?php 
+
+include_once("db.php");
+
+$validationError = ''; 
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $author = $_POST["author"];
+    $title = $_POST['title'];
+    $body = $_POST['body'];
+    $createdAt =  date('Y-m-d H:i:s', time());
+
+    if(empty($author)) {
+        $validationError = "Niste uneli ime autora";
+    } else if (empty($title)){
+        $validationError = "Niste uneli naslov";
+    } else {  
+        $sql = "INSERT INTO posts (
+            title, author, body, created_at) 
+        VALUES ('$author', '$title', '$body', '$createdAt')";
+        $statement = $connection->prepare($sql);
+        $statement->execute();
+        header("Location:createpost.php");
+        }
+}
+
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,6 +67,7 @@
             <input type="text" id="body" name="body"><br><br>
             <input type="submit" value="Submit">
         </form>
+        <p class ="validation"> <?php echo $validationError ?></p>
     </div>
     <?php include('sidebar.php'); ?>
 
