@@ -75,17 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             <p><?php echo $post['body']; ?></p>
         </div><!-- /.blog-post -->
-    <div class="comments">
-    <form action="" method="POST">
-            <label for="author">Author name:</label><br>
-            <input type="text" id="author" name="author"><br>
-            <label for="comment">Comment text:</label><br>
-            <input type="text" id="comment" name="comment"><br>
-            <input type="hidden" id="postId" name="postId" value="<?php echo $post['id']?>"><br>
-            <input type="submit" value="Add Comment">
-        </form>
-        <?php echo $validationError; ?>
-    </div>
+    
         <?php } ?>
 
         <nav class="blog-pagination">

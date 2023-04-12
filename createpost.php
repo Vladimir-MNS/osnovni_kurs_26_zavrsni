@@ -58,13 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     <div class="form">
         <form action="" method="POST">
-            <label for="author">Author name:</label><br>
+            <label class="form-label" for="author">Author name:</label><br>
             <input type="text" id="author" name="author"><br>
-            <label for="title">Title:</label><br>
+            <label class="form-label" for="title">Title:</label><br>
             <input type="text" id="title" name="title"><br>
-            <label for="body">Body:</label><br>
-            <input type="text" id="body" name="body"><br><br>
-            <input type="submit" value="Submit">
+            <label class="form-label" for="body">Body:</label><br>
+            <input type="text" id="post-field-body" name="body"><br><br>
+            <input type="submit" class="post-button" value="Submit">
         </form>
         <p class ="validation"> <?php echo $validationError ?></p>
     </div>

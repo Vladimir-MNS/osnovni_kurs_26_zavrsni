@@ -29,10 +29,62 @@ h6,
 
 .validation {
     color: red;
-    font-size: 16;
+    font-size: 16px;
     padding-top: 10px;
 }
 
 .single-comment {
     list-style-type: none;
+    background-color: #f5f5f5;
+    padding: 5px;
+}
+
+.comment-author {
+    color: #007bff;
+    font-size: 12px;
+}
+
+.post-button {
+    background-color: #b34848;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+ul {
+    padding:none;
+}
+
+input[type=text] {
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: none;
+    background-color: #b34848;
+    color: white;
+  }
+
+.form-label {
+    color:#b34848;
+}
+
+#post-field-body {
+    height: 100px;
+}
+
+.create-post-form {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form {
+    width:70%;
 }
