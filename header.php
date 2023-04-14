@@ -3,10 +3,7 @@
         <div class="container" id="navbar">
             <nav class="nav">
                 <a class="nav-link active" href="posts.php">Home</a>
-                <a class="nav-link" href="#">New features</a>
-                <a class="nav-link" href="#">Press</a>
-                <a class="nav-link" href="#">New hires</a>
-                <a class="nav-link" href="#">About</a>
+                <a class="nav-link" href="createpost.php">Create</a>
             </nav>
         </div>
     </div>

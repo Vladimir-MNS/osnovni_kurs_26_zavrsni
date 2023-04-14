@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <input type="text" id="post-field-body" name="body"><br><br>
             <input type="submit" class="post-button" value="Submit">
         </form>
-        <p class ="validation"> <?php echo $validationError ?></p>
+        <p class ="alert i alert-danger"> <?php echo $validationError ?></p>
     </div>
     <?php include('sidebar.php'); ?>
 

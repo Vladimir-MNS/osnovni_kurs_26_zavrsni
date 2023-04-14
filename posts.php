@@ -2,6 +2,19 @@
 
 include ("db.php");
 
+
+if(isset($_GET['did'])){
+    $did = $_GET['did'];
+    $sql = "DELETE FROM comments WHERE post_id='$did'";
+    $statement = $connection->prepare($sql);
+    $statement->execute();
+
+    $sql = "DELETE FROM posts WHERE id='$did'";
+    $statement = $connection->prepare($sql);
+    $statement->execute();
+    header("posts.php");
+}
+
 $sqlGetPosts = "SELECT * FROM posts";
 $statement = $connection->prepare($sqlGetPosts);
 $statement->execute();
@@ -11,27 +24,6 @@ $allPosts = $statement->fetchAll();
 $orderedPosts = array_reverse($allPosts);
 
 $validationError = '';
-
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $author = $_POST["author"];
-    $comment = $_POST['comment'];
-    $postId = $_POST['postId'];
-
-    if(empty($author)) {
-        $validationError = "Niste uneli ime autora";
-    } else if (empty($comment)){
-        $validationError = "Niste uneli tekst komentara";
-    } else {  
-        $sql = "INSERT INTO comments (
-            author, text, post_id) 
-        VALUES ('$author', '$comment', '$postId')";
-        $statement = $connection->prepare($sql);
-        $statement->execute();
-        }
-}
-
-
-
 
 
 ?>
